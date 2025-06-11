@@ -739,4 +739,4 @@ if __name__ == "__main__":
     interface = create_interface()
     # Use environment variable for port, default to 7860
     port = int(os.getenv("PORT", 7860))
-    interface.launch(server_name="0.0.0.0", server_port=port, share=False)
+    interface.launch(server_name="0.0.0.0", server_port=port, share=True)
