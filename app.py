@@ -733,29 +733,18 @@ def create_interface():
     
     return interface
 
+# At the bottom, modify the launch section:
 if __name__ == "__main__":
     print("🚀 Starting Resume Analysis Tool...")
     print("📊 API Status:", "✅ Configured" if CLAUDE_API_KEY else "❌ Not Configured")
-    
     interface = create_interface()
     
-    # Cloud-friendly launch configuration
+    # Get port from environment variable (Render provides this)
     port = int(os.getenv("PORT", 7860))
     
-    try:
-        interface.launch(
-            server_name="0.0.0.0",
-            server_port=port,
-            share=False,
-            enable_queue=False,
-            show_error=True,
-            auth=None,
-            inbrowser=False
-        )
-    except Exception as e:
-        print(f"Launch failed: {e}")
-        # Fallback launch
-        interface.launch(
-            server_name="0.0.0.0",
-            server_port=port
-        )
+    interface.launch(
+        server_name="0.0.0.0",
+        server_port=port,
+        share=False,  # Set to False for production
+        debug=False   # Set to False for production
+    )
