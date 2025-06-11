@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: resume-analyzer
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: CLAUDE_API_KEY
+        sync: false
